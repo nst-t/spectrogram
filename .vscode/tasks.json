@@ -1,0 +1,73 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "conan-install",
+      "type": "shell",
+      "command": "conan",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "args": [
+        "install",
+        ".",
+        "--output-folder=build",
+        "--build=missing",
+        "-s",
+        "build_type=Debug",
+      ]
+    },
+    {
+      "label": "cmake-configure",
+      "type": "shell",
+      "command": "cmake",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "args": [
+        ".",
+        "-Bbuild",
+        "-DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake",
+        "-DCMAKE_BUILD_TYPE=Debug",
+      ]
+    },
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "cmake",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "args": [
+        "--build",
+        "build"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "mount-data",
+      "type": "shell",
+      "command": "nst",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "args": [
+        "data",
+        "mount"
+      ]
+    },
+    {
+      "label": "mount-data-and-build",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "conan-install",
+        "cmake-configure",
+        "build",
+        "mount-data",
+      ]
+    },
+  ]
+}

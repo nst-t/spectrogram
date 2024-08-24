@@ -1,0 +1,22 @@
+{
+	"name": "nstrumenta",
+	"build": {
+		"dockerfile": "./Dockerfile"
+	},
+	"privileged": true,
+	"runArgs": [
+		"--env-file",
+		".nstrumenta/credentials/.env"
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cmake-tools",
+				"ms-vscode.cpptools",
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"ms-vscode.cpptools-extension-pack"
+			]
+		}
+	}
+}

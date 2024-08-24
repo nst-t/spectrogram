@@ -1,0 +1,20 @@
+{
+  "modules": [
+    {
+      "type": "algorithm",
+      "name": "trax",
+      "folder": "src"
+    },
+    {
+      "type": "dataflows",
+      "folder": "dataflows"
+    },
+    {
+      "type": "sandbox",
+      "name": "viewer-timeseries",
+      "folder": "viewer-timeseries",
+      "entry": "index.html"      
+    }
+  ],
+  "port": 8080
+}
