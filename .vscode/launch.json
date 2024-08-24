@@ -39,7 +39,7 @@
             "program": "${workspaceFolder}/build/spectrogram",
             "args": [
                 "--infile=${workspaceFolder}/nst-test/data/synthetic/synthetic.mcap",
-                "--outfile=${workspaceFolder}/nst-test/data/spectrogram/spectrogram_output.mcap"
+                "--outfile=${workspaceFolder}/nst-test/data/synthetic/spectrogram_output.mcap"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
