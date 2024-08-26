@@ -1,20 +1,34 @@
 #ifndef NST_MAIN_H
 #define NST_MAIN_H
+
 #include "nst_types.h"
-#ifdef __cplusplus
 
-extern "C" {
+#define WINDOW_SIZE 256
 
-#endif
+typedef struct
+{
+    double real;
+    double imag;
+} complex_t;
 
-extern nst_data_t nst_data;
+complex_t complex_add(complex_t a, complex_t b);
+complex_t complex_sub(complex_t a, complex_t b);
+complex_t complex_mul(complex_t a, complex_t b);
+complex_t complex_exp(double theta);
+double complex_abs(complex_t a);
 
-extern void algorithm_init();
+void fft(complex_t *X, int N);
 
-extern void algorithm_update(const nst_event_t input_event, nst_event_t output_events[4], int *output_events_count);
+typedef struct
+{
+    nst_event_t *buffer;
+    int buffer_index;
+    double *window;
+    double *spectrogram;
+    int window_size;
+} spectrogram_state_t;
 
-#ifdef __cplusplus
-}
-#endif
+void init_spectrogram_state(spectrogram_state_t *state, int window_size);
+void algorithm_update(spectrogram_state_t *state, const nst_event_t *input_event);
 
-#endif
+#endif // NST_MAIN_H

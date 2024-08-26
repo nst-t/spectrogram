@@ -9,6 +9,7 @@ find_package(lz4 REQUIRED)
 find_package(mcap REQUIRED)
 find_package(cargs REQUIRED)
 find_package(nlohmann_json REQUIRED)
+find_package(PNG REQUIRED)
 
 # Define sources and headers for the spectrogram executable
 set(SPECTROGRAM_SOURCES
@@ -17,6 +18,7 @@ set(SPECTROGRAM_SOURCES
     src/quaternion/quaternion.c
     src/nelder_mead/nelder_mead.c
     src/spectrogram.cpp
+    src/image_utils/image_utils.c
 )
 
 # Define the spectrogram executable target
@@ -26,6 +28,7 @@ target_link_libraries(spectrogram ${CONAN_LIBS} m)
 target_link_libraries(spectrogram mcap::mcap)
 target_link_libraries(spectrogram cargs::cargs)
 target_link_libraries(spectrogram nlohmann_json::nlohmann_json)
+target_link_libraries(spectrogram PNG::PNG)
 
 # Define sources for the synthetic executable
 set(SYNTHETIC_SOURCES

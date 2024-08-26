@@ -11,6 +11,7 @@ class CompressorRecipe(ConanFile):
         self.requires("mcap/1.2.1")
         self.requires("cargs/1.1.0")
         self.requires("nlohmann_json/3.11.3")
+        self.requires("libpng/1.6.43")
 
     def build_requirements(self):
         self.tool_requires("cmake/3.28.1")
